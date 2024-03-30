@@ -234,7 +234,7 @@ const Home = () => {
             <div className="flex flex-row items-center gap-2">
               <Select
                 label="Select Price"
-                className="bg-white font-primary"
+                className="bg-white font-primary capitalize"
                 value={dataSortBY.price}
                 onChange={(val) => setDataSortBY({ ...dataSortBY, price: val })}
               >
@@ -250,7 +250,7 @@ const Home = () => {
               </Select>
               <Select
                 label="Select Category"
-                className="bg-white font-primary"
+                className="bg-white font-primary capitalize"
                 value={dataSortBY.category}
                 onChange={(val) =>
                   setDataSortBY({ ...dataSortBY, category: val })
