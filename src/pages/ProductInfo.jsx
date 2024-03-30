@@ -6,7 +6,7 @@ const data = {
   price: "$79.99",
   rating: 4.2,
   discount: "20%",
-  availability: false,
+  availability: true,
   category: "Earphones",
 };
 
@@ -14,9 +14,9 @@ const ProductInfo = () => {
   const { productName, price, rating, discount, availability, category } = data;
 
   return (
-    <div className="w-full h-full py-4 pb-10 md:pb-0  md:py-16">
+    <div className="w-full h-full py-4 pb-10   lg:py-16 md:px-10 lg:px-5">
       <Wrapper>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="w-full h-[400px] rounded-lg p-4 bg-white">
             <img
               src="https://via.placeholder.com/800"
@@ -100,7 +100,7 @@ const ProductInfo = () => {
                   </Button>
                 </div>
               )}
-              <div className="mt-4 flex flex-row flex-wrap items-center gap-2">
+              <div className="mt-6 flex flex-row flex-wrap items-center gap-2">
                 <Rating value={Math.floor(rating)} readonly />
                 <span>
                   <Typography
