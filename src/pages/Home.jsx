@@ -1,4 +1,4 @@
-import { Rating, Typography } from "@material-tailwind/react";
+import { Rating, Select, Typography, Option } from "@material-tailwind/react";
 import Wrapper from "../layouts/Wrapper";
 import { Link } from "react-router-dom";
 
@@ -164,18 +164,101 @@ const data = [
     category: "TV",
   },
 ];
+
+const sortby = {
+  price: [
+    {
+      text: "Low to High",
+      value: "low-to-high",
+    },
+    {
+      text: "High to Low",
+      value: "high-to-low",
+    },
+  ],
+  category: [
+    {
+      text: "phone",
+      value: "phone",
+    },
+    {
+      text: "computer",
+      value: "computer",
+    },
+    {
+      text: "tv",
+      value: "tv",
+    },
+    {
+      text: "earphones",
+      value: "earphones",
+    },
+    {
+      text: "tablet",
+      value: "tablet",
+    },
+    {
+      text: "charger",
+      value: "charger",
+    },
+    {
+      text: "mouse",
+      value: "mouse",
+    },
+    {
+      text: "keyboard",
+      value: "keyboard",
+    },
+    { text: "Bluetooth", value: "bluetooth" },
+  ],
+};
+
 const Home = () => {
   return (
     <div className="py-10 w-full h-full">
       <Wrapper>
         <div>
-          <Typography
-            variant="h3"
-            className="font-semibold capitalize font-primary border-b-2 border-b-blue-500 max-w-fit"
-          >
-            All Products
-          </Typography>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 w-full h-full">
+          <div className="flex flex-row items-center gap-4 justify-between flex-wrap">
+            <Typography
+              variant="h3"
+              className="font-semibold capitalize font-primary border-b-2 border-b-blue-500 max-w-fit"
+            >
+              All Products
+            </Typography>
+            <div className="flex flex-row items-center gap-2">
+              <Select label="Select Price" className="bg-white font-primary">
+                {sortby.price.map((item, index) => (
+                  <Option
+                    key={index}
+                    value={item.value}
+                    className="capitalize font-primary"
+                  >
+                    {item.text}
+                  </Option>
+                ))}
+              </Select>
+              <Select label="Select Category" className="bg-white font-primary">
+                {sortby.category.map((item, index) => (
+                  <Option
+                    key={index}
+                    value={item.value}
+                    className="capitalize font-primary"
+                  >
+                    {item.text}
+                  </Option>
+                ))}
+              </Select>
+            </div>
+          </div>
+          <div className="mt-8 text-base font-semibold">
+            <Typography
+              className="font-primary font-semibold text-gray-600"
+              variant="h6"
+            >
+              {data.length} Products Found
+            </Typography>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8 w-full h-full">
             {data.map((item, index) => (
               <Link
                 to={`/product/${index}`}
