@@ -1,4 +1,10 @@
-import { Rating, Select, Typography, Option } from "@material-tailwind/react";
+import {
+  Rating,
+  Select,
+  Typography,
+  Option,
+  Input,
+} from "@material-tailwind/react";
 import Wrapper from "../layouts/Wrapper";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -218,6 +224,8 @@ const Home = () => {
   const [dataSortBY, setDataSortBY] = useState({
     price: "",
     category: "",
+    minPrice: "",
+    maxPrice: "",
   });
 
   return (
@@ -231,12 +239,13 @@ const Home = () => {
             >
               All Products
             </Typography>
-            <div className="flex flex-row items-center gap-2">
+            <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full h-full  gap-2">
               <Select
                 label="Select Price"
                 className="bg-white font-primary capitalize"
                 value={dataSortBY.price}
                 onChange={(val) => setDataSortBY({ ...dataSortBY, price: val })}
+                color="blue"
               >
                 {sortby.price.map((item, index) => (
                   <Option
@@ -255,6 +264,7 @@ const Home = () => {
                 onChange={(val) =>
                   setDataSortBY({ ...dataSortBY, category: val })
                 }
+                color="blue"
               >
                 {sortby.category.map((item, index) => (
                   <Option
@@ -266,9 +276,27 @@ const Home = () => {
                   </Option>
                 ))}
               </Select>
+              <Input
+                label="Min Price"
+                className="bg-white font-primary capitalize"
+                value={dataSortBY.minPrice}
+                onChange={(e) =>
+                  setDataSortBY({ ...dataSortBY, minPrice: e.target.value })
+                }
+                color="blue"
+              />
+              <Input
+                label="Max Price"
+                className="bg-white font-primary capitalize"
+                value={dataSortBY.maxPrice}
+                onChange={(e) =>
+                  setDataSortBY({ ...dataSortBY, maxPrice: e.target.value })
+                }
+                color="blue"
+              />
             </div>
           </div>
-          <div className="mt-8 text-base font-semibold">
+          <div className="mt-4 text-base font-semibold">
             <Typography
               className="font-primary font-semibold text-gray-600"
               variant="h6"
