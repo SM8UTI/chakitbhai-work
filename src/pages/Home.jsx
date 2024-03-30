@@ -214,6 +214,11 @@ const sortby = {
 };
 
 const Home = () => {
+  const [dataSortBY, setDataSortBY] = useState({
+    price: "",
+    category: "",
+  });
+
   return (
     <div className="py-10 w-full h-full">
       <Wrapper>
@@ -226,7 +231,12 @@ const Home = () => {
               All Products
             </Typography>
             <div className="flex flex-row items-center gap-2">
-              <Select label="Select Price" className="bg-white font-primary">
+              <Select
+                label="Select Price"
+                className="bg-white font-primary"
+                value={dataSortBY.price}
+                onChange={(val) => setDataSortBY({ ...dataSortBY, price: val })}
+              >
                 {sortby.price.map((item, index) => (
                   <Option
                     key={index}
@@ -237,7 +247,14 @@ const Home = () => {
                   </Option>
                 ))}
               </Select>
-              <Select label="Select Category" className="bg-white font-primary">
+              <Select
+                label="Select Category"
+                className="bg-white font-primary"
+                value={dataSortBY.category}
+                onChange={(val) =>
+                  setDataSortBY({ ...dataSortBY, category: val })
+                }
+              >
                 {sortby.category.map((item, index) => (
                   <Option
                     key={index}
